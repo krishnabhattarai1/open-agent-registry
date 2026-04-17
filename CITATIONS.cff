@@ -3,8 +3,8 @@ title: "Open Agent Registry (OAR)"
 message: "If you use this software, please cite it using the metadata below."
 type: software
 license: MIT
-repository-code: "https://github.com/YOUR_USERNAME/open-agent-registry"
-url: "https://github.com/YOUR_USERNAME/open-agent-registry"
+repository-code: "https://github.com/krishnabhattarai1/open-agent-registry"
+url: "https://github.com/krishnabhattarai1/open-agent-registry"
 abstract: >
   Open Agent Registry (OAR) is a token-optimized AI agent registry and
   discovery framework for agent-to-agent communication. It provides a

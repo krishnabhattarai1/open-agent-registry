@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688.svg)](https://fastapi.tiangolo.com)
-[![CI](https://github.com/YOUR_USERNAME/open-agent-registry/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/open-agent-registry/actions/workflows/ci.yml)
+[![CI](https://github.com/krishnabhattarai1/open-agent-registry/actions/workflows/ci.yml/badge.svg)](https://github.com/krishnabhattarai1/open-agent-registry/actions/workflows/ci.yml)
 
 </div>
 
@@ -115,7 +115,7 @@ POST /v1/match
 ## Quick start
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/open-agent-registry
+git clone https://github.com/krishnabhattarai1/open-agent-registry
 cd open-agent-registry
 ./start.sh
 ```
