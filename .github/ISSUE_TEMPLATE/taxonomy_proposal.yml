@@ -1,0 +1,42 @@
+name: Taxonomy Code Proposal
+description: Propose a new capability code for the built-in taxonomy
+labels: ["taxonomy"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The capability taxonomy is the shared vocabulary that makes token-efficient discovery work.
+        New codes need to be broad enough to be reusable and distinct enough not to overlap.
+
+  - type: input
+    id: code
+    attributes:
+      label: Proposed code
+      description: In domain.action or domain.action.qualifier format
+      placeholder: "e.g. data.profile or text.proofread"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What does this capability mean?
+      description: One sentence definition.
+    validations:
+      required: true
+
+  - type: textarea
+    id: agents
+    attributes:
+      label: Real agent examples
+      description: Name 2–3 agents that would register this code.
+    validations:
+      required: true
+
+  - type: input
+    id: overlap
+    attributes:
+      label: Closest existing code
+      description: What's the nearest existing code, and why is this different?
+    validations:
+      required: true

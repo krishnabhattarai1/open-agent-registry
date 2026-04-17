@@ -1,0 +1,62 @@
+cff-version: 1.2.0
+title: "Open Agent Registry (OAR)"
+message: "If you use this software, please cite it using the metadata below."
+type: software
+license: MIT
+repository-code: "https://github.com/YOUR_USERNAME/open-agent-registry"
+url: "https://github.com/YOUR_USERNAME/open-agent-registry"
+abstract: >
+  Open Agent Registry (OAR) is a token-optimized AI agent registry and
+  discovery framework for agent-to-agent communication. It provides a
+  structured capability taxonomy, compact wire format, and two-stage
+  discovery protocol that reduces token cost by ~89% compared to verbose
+  registry designs.
+keywords:
+  - ai-agents
+  - agent-registry
+  - agent-discovery
+  - multi-agent-systems
+  - a2a
+  - mcp
+  - llm
+  - fastapi
+
+references:
+  - type: article
+    title: "Evolution of AI Agent Registry Solutions: Centralized, Enterprise, and Distributed Approaches"
+    url: "https://arxiv.org/html/2508.03095v2"
+    year: 2025
+    notes: "Informed the overall registry architecture and comparison of centralised vs. decentralised approaches."
+
+  - type: article
+    title: "A Survey of Agent Interoperability Protocols"
+    url: "https://arxiv.org/html/2505.02279v1"
+    year: 2025
+    notes: "Informed the multi-protocol endpoint design (A2A, MCP, ACP, ANP)."
+
+  - type: website
+    title: "MIT AI Agent Index"
+    url: "https://aiagentindex.mit.edu"
+    institution:
+      name: "Massachusetts Institute of Technology"
+    year: 2025
+    notes: "Inspired the agent card schema and capability categorisation."
+
+  - type: website
+    title: "MIT NANDA Initiative — Networked Agents and Decentralized AI"
+    url: "https://www.media.mit.edu"
+    institution:
+      name: "Massachusetts Institute of Technology"
+    notes: "Inspired the federation architecture and consortium governance model."
+
+  - type: website
+    title: "CapIndex — Open Standard for Agent-Discoverable Capabilities"
+    url: "https://capindex.dev"
+    notes: "Inspired the compact capability card format and taxonomy code structure."
+
+  - type: standard
+    title: "FIPA Agent Management Specification"
+    url: "http://www.fipa.org/specs/fipa00023/XC00023H.html"
+    institution:
+      name: "Foundation for Intelligent Physical Agents (FIPA)"
+    notes: "Historical foundation for agent directory and discovery concepts."

@@ -1,0 +1,52 @@
+{
+  "examples": [
+    {
+      "description": "Find a code reviewer via A2A",
+      "request": {
+        "need": ["code.review"],
+        "proto": "a2a",
+        "limit": 3
+      }
+    },
+    {
+      "description": "Find an agent that can review AND fix code, prefer one that can also write tests",
+      "request": {
+        "need": ["code.review", "code.fix"],
+        "want": ["code.test"],
+        "proto": "a2a",
+        "limit": 5
+      }
+    },
+    {
+      "description": "Find a text summarizer that accepts bearer or api_key auth",
+      "request": {
+        "need": ["text.summarize"],
+        "auth": ["bearer", "api_key"],
+        "limit": 5
+      }
+    },
+    {
+      "description": "Find any agent in the 'code' domain (prefix match)",
+      "request": {
+        "need": ["code"],
+        "limit": 10
+      }
+    },
+    {
+      "description": "Find a web scraper that accepts HTML input",
+      "request": {
+        "need": ["web.scrape"],
+        "io_in": "text/html",
+        "limit": 3
+      }
+    },
+    {
+      "description": "Find a high-quality semantic search agent (min score 80)",
+      "request": {
+        "need": ["search.semantic"],
+        "min_score": 80,
+        "limit": 5
+      }
+    }
+  ]
+}

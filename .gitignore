@@ -1,0 +1,74 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.installed.cfg
+lib/
+lib64/
+sdist/
+wheels/
+*.egg-info/
+.env
+.venv/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Coverage / test artefacts
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+htmlcov/
+.pytest_cache/
+.hypothesis/
+.tox/
+.nox/
+
+# Mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Ruff
+.ruff_cache/
+
+# Alembic — don't commit local DB version file if overriding
+# (keep versions/ directory itself tracked)
+
+# Environment files — never commit secrets
+.env
+.env.*
+!.env.example
+
+# Docker override
+docker-compose.override.yml
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.iml
+.project
+.pydevproject
+
+# Logs
+*.log
+logs/
+
+# Temporary
+tmp/
+temp/

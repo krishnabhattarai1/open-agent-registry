@@ -1,0 +1,40 @@
+oar: "1.0"
+
+name: "code-reviewer"
+description: "Reviews pull requests for bugs, security issues, and style"
+version: "0.3.1"
+publisher: "acme-corp"
+homepage: "https://github.com/acme/code-reviewer"
+repository: "https://github.com/acme/code-reviewer"
+license: "Apache-2.0"
+status: "active"
+
+tags:
+  - python
+  - javascript
+  - security
+
+capabilities:
+  - code: "code.review"
+    input_types: ["text/plain", "text/x-diff"]
+    output_types: ["application/json"]
+  - code: "code.fix"
+    input_types: ["text/plain"]
+    output_types: ["text/plain"]
+  - code: "sec.scan"
+    input_types: ["text/plain"]
+    output_types: ["application/json"]
+
+endpoints:
+  - protocol: "a2a"
+    url: "https://code-reviewer.acme.com/.well-known/agent.json"
+    auth:
+      type: "bearer"
+      config:
+        token_url: "https://auth.acme.com/token"
+        scopes: ["review:read"]
+
+  - protocol: "mcp"
+    url: "https://code-reviewer.acme.com/mcp"
+    auth:
+      type: "api_key"

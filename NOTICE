@@ -1,0 +1,76 @@
+Open Agent Registry (OAR)
+Copyright (c) 2025 OAR Contributors
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RESEARCH INSPIRATION AND ATTRIBUTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This project's architecture, capability taxonomy, and two-stage discovery
+protocol are inspired by the following research and initiatives:
+
+1. MIT AI Agent Index (2025)
+   Massachusetts Institute of Technology
+   URL: https://aiagentindex.mit.edu
+   Description: A comprehensive index of AI agents documenting design
+   patterns, capabilities, and safety features across 30+ prominent agents.
+   Informed our agent card metadata schema and capability categorisation.
+
+2. MIT NANDA Initiative
+   Networked Agents and Decentralized AI
+   Massachusetts Institute of Technology
+   Description: Research on neutral, consortium-governed switchboards for
+   cross-organizational agent coordination and federated discovery.
+   Informed our federation architecture and registry governance model.
+
+3. MIT Media Lab — Multi-Agent Systems Research
+   URL: https://www.media.mit.edu
+   Description: Research on multi-agent system coordination patterns.
+   Informed our two-stage broker model (discover → connect → disengage).
+
+4. AGNTCY Agent Directory
+   URL: https://agntcy.org
+   Description: IPFS Kademlia DHT-based routing with OCI-aligned content
+   addressing and Sigstore integrity verification.
+   Informed our decentralised federation extension design.
+
+5. CapIndex — Open Standard for Agent-Discoverable Capabilities
+   URL: https://capindex.dev
+   Description: Open standard for capability cards with semantic summaries
+   and machine-queryable descriptions.
+   Informed our compact capability card and taxonomy code format.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROTOCOL STANDARDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OAR is designed to be compatible with the following open protocol standards:
+
+- Agent-to-Agent Protocol (A2A)       https://a2a-protocol.org
+- Model Context Protocol (MCP)        https://modelcontextprotocol.io
+- Agent Communication Protocol (ACP)  https://agentprotocol.ai
+- Agent Network Protocol (ANP)        https://agent-network-protocol.com
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ACADEMIC REFERENCES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[1] "Evolution of AI Agent Registry Solutions: Centralized, Enterprise,
+    and Distributed Approaches"
+    arXiv:2508.03095, 2025
+    https://arxiv.org/html/2508.03095v2
+
+[2] "A Survey of Agent Interoperability Protocols"
+    arXiv:2505.02279, 2025
+    https://arxiv.org/html/2505.02279v1
+
+[3] FIPA Agent Management Specification
+    Foundation for Intelligent Physical Agents
+    http://www.fipa.org/specs/fipa00023/XC00023H.html
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This NOTICE file is provided for attribution purposes in accordance with
+open-source best practices. Use of this software does not imply endorsement
+by any of the above institutions or projects.
