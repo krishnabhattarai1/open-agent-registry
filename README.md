@@ -21,23 +21,85 @@ Every design decision prioritises minimising the tokens an agent must process to
 
 ## How it works
 
+OAR uses a **two-stage discovery protocol** — agents spend tokens on work, not on finding who to work with.
+
 ```
-Agent A                    OAR Registry               Agent B
-  │                            │                          │
-  │  POST /v1/match            │                          │
-  │  {"need":["code.review"]}  │                          │
-  │ ─────────────────────────► │                          │
-  │                            │                          │
-  │  ◄───── 60 tokens ─────── │                          │
-  │  {"r":[{"id":"3f9a","s":95}],"ttl":3600}             │
-  │                            │                          │
-  │  GET /v1/agents/3f9a?fields=ep,auth                   │
-  │ ─────────────────────────► │                          │
-  │  ◄───── 35 tokens ─────── │                          │
-  │  {"ep":"https://...","auth":{...}}                    │
-  │                            │                          │
-  │  ──── direct A2A call ─────────────────────────────► │
-  │       (registry not involved)                         │
+╔══════════════════════════════════════════════════════════════════════════╗
+║                    TWO-STAGE DISCOVERY PROTOCOL                         ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+  Agent A                    OAR Registry                    Agent B
+    │                             │                               │
+    │  ── STAGE 1: MATCH ─────────────────────────────────────── │
+    │                             │                               │
+    │  POST /v1/match             │                               │
+    │  {                          │                               │
+    │    "need": ["code.review"], │                               │
+    │    "proto": "a2a",          │                               │
+    │    "limit": 3               │                               │
+    │  }                          │                               │
+    │ ──────────────────────────► │                               │
+    │                             │  lookup capability index      │
+    │                             │  score & rank candidates      │
+    │                             │  filter by protocol + auth    │
+    │  ◄── ~60 tokens ─────────── │                               │
+    │  {                          │                               │
+    │    "r": [                   │                               │
+    │      {"id":"3f9a","n":"CodeOwl",                            │
+    │       "c":["code.review"],  │                               │
+    │       "p":"a2a","s":95},    │ ← score 0-100                 │
+    │      {"id":"7e2b","n":"LintBot",                            │
+    │       "c":["code.review"],  │                               │
+    │       "p":"a2a","s":81}     │                               │
+    │    ],                       │                               │
+    │    "t":2,"ttl":3600         │ ← cache for 1 hour            │
+    │  }                          │                               │
+    │                             │                               │
+    │  picks best score (95) ─────│                               │
+    │                             │                               │
+    │  ── STAGE 2: CONNECT ───────────────────────────────────── │
+    │                             │                               │
+    │  GET /v1/agents/3f9a        │                               │
+    │      ?fields=ep,auth        │ ← only fetch what's needed    │
+    │ ──────────────────────────► │                               │
+    │                             │                               │
+    │  ◄── ~35 tokens ─────────── │                               │
+    │  {                          │                               │
+    │    "id": "3f9a",            │                               │
+    │    "ep": "https://codeowl.ai/a2a",                          │
+    │    "auth": {                │                               │
+    │      "t": "bearer",         │                               │
+    │      "url": "https://auth.codeowl.ai/token"                 │
+    │    }                        │                               │
+    │  }                          │                               │
+    │                             │                               │
+    │  ── STAGE 3: DIRECT (registry not involved) ─────────────  │
+    │                             │                               │
+    │  POST https://codeowl.ai/a2a (Bearer token)                 │
+    │ ──────────────────────────────────────────────────────────► │
+    │                             │                               │
+    │  ◄── agent response ──────────────────────────────────────  │
+    │                             │                               │
+
+╔══════════════════════════════════════════════════════════════════════════╗
+║  Total registry cost: ~95 tokens   (vs ~900 in a verbose design)        ║
+║  Cached repeat lookup: 0 tokens    (ETag → 304 Not Modified)            ║
+╚══════════════════════════════════════════════════════════════════════════╝
+```
+
+### Discovery query options
+
+```json
+POST /v1/match
+{
+  "need":     ["code.review"],        ← required capabilities (all must match)
+  "want":     ["code.fix"],           ← preferred (boosts score, not required)
+  "proto":    "a2a",                  ← required protocol
+  "auth":     ["bearer", "api_key"],  ← acceptable auth methods
+  "io_in":    "text/x-diff",          ← input MIME type you will send
+  "limit":    5,                      ← max results
+  "min_score": 80                     ← quality threshold 0–100
+}
 ```
 
 ## Features
